@@ -55,7 +55,7 @@ static void free_tree(node *n)
   {
     free_tree(n->left);
     free_tree(n->right);
-    // free(n->word);
+    free(n->word);
     free(n);
   }
 }
