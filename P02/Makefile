@@ -18,7 +18,7 @@ clean:
 	rm -f count_words
 	rm -f primes
 	rm -f sizes_x32
-
+	rm -f primesOldVersion
 
 all:		hello table sizes fibonacci command_line_arguments integer_arithmetic_pitfalls factor rational_approximation
 
@@ -83,11 +83,8 @@ rational_approximation:		rational_approximation.c
 solution_rational_approximation:	solution_rational_approximation.c elapsed_time.h
 	cc -Wall -O2 solution_rational_approximation.c -DDEBUG=0 -o solution_rational_approximation -lm
 
-
-
-#
-# programs with execution errors
-#
+primesOldVersion: primesOldVersion.c 
+	cc -Wall -O2 primesOldVersion.c -DDEBUG== -o primesOldVersion -lm
 
 binary_search:	binary_search.c
 	cc -Wall -g binary_search.c -o binary_search
