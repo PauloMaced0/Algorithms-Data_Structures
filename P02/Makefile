@@ -18,10 +18,12 @@ clean:
 	rm -f count_words
 	rm -f primes
 	rm -f sizes_x32
-	rm -f primesOldVersion
+	rm -f ten_digits_integer
 
 all:		hello table sizes fibonacci command_line_arguments integer_arithmetic_pitfalls factor rational_approximation
 
+ten_digits_integer:	ten_digits_integer.c
+	cc -Wall -O2 -g ten_digits_integer.c -o ten_digits_integer
 
 
 hello:		hello.c
@@ -82,9 +84,6 @@ rational_approximation:		rational_approximation.c
 
 solution_rational_approximation:	solution_rational_approximation.c elapsed_time.h
 	cc -Wall -O2 solution_rational_approximation.c -DDEBUG=0 -o solution_rational_approximation -lm
-
-primesOldVersion: primesOldVersion.c 
-	cc -Wall -O2 primesOldVersion.c -DDEBUG== -o primesOldVersion -lm
 
 binary_search:	binary_search.c
 	cc -Wall -g binary_search.c -o binary_search
