@@ -41,26 +41,33 @@ int validate(long int number){
     }
     return 1;
 }
-void veryNicefunction(int i, int arr[]){
+void arrayTostring(int arr[]){
     char str[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '\0'};
     for (int j = 0; j < 10; j++)
-        {
-            str[j] = arr[j] + '0';
-        }
+    {
+        str[j] = arr[j] + '0';
+    }
     char *p;
     long int number = strtol(str, &p, 10);
     printf("%ld",number);
-    if(number == 3816547290){
-        printf("%ld",number);
+}
+
+void veryNicefunction(int nd,long n, int arr[]){
+    if(nd == 10){ 
+        printf("%ld\n",n);
+    } else {
+        nd++;
+        n *= 10; 
+        for (int d = 0; d < 10; d++)
+        {
+            if(arr[d] == 0 && (n + d) % nd == 0){
+                arr[d] = 1;
+                n += d; 
+                veryNicefunction(nd,n,arr);
+                arr[d] = 0;
+            }
+        }
     }
-
-    for(int k = i + 1; k<10; k++){
-        arr[i] = k;
-        veryNicefunction(i+1,arr);
-       
-
-    }
-
 }
 int main()
 {
@@ -69,7 +76,9 @@ int main()
     //         printf("%ld\n",i);
     //     }     
     // }
-    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-    int i = 0;
-    veryNicefunction(i,arr);
+    int arr[10] = {0};
+    int n = 1;
+    int nd = 0;
+    veryNicefunction(nd, n, arr);
+   //the number we are looking for... 3816547290 
 }
