@@ -27,7 +27,7 @@ int allDifferentdigits(long int number){
 }
 
 int validate(long int number){
-    if ((number % 10 == 0) && allDifferentdigits(number))
+    if ((number % 10 == 0) ) // se implementar forma iterativa adicionar && allDiferentdigits(number) no if
     {
         for (int k = 2; k <= 9; k++)
         {
@@ -52,20 +52,16 @@ void arrayTostring(int arr[]){
     printf("%ld",number);
 }
 
-void veryNicefunction(int nd,long n, int arr[]){
-    if(nd == 10){ 
+void veryNicefunction(long n, int nd, int arr[]){
+    if(nd == 10 && validate(n)){
         printf("%ld\n",n);
-    } else {
-        nd++;
-        n *= 10; 
-        for (int d = 0; d < 10; d++)
-        {
-            if(arr[d] == 0 && (n + d) % nd == 0){
-                arr[d] = 1;
-                n += d; 
-                veryNicefunction(nd,n,arr);
-                arr[d] = 0;
-            }
+    }
+    nd++;
+    for(int d = 0; d < 10; d++){
+        if((arr[d] == 0) ){
+            arr[d] = 1;
+            veryNicefunction(n * 10 + d,nd,arr);
+            arr[d] = 0;
         }
     }
 }
@@ -77,8 +73,8 @@ int main()
     //     }     
     // }
     int arr[10] = {0};
-    int n = 1;
+    int n = 0;
     int nd = 0;
-    veryNicefunction(nd, n, arr);
+    veryNicefunction(n, nd, arr);
    //the number we are looking for... 3816547290 
 }
