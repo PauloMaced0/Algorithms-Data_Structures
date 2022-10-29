@@ -67,7 +67,7 @@ void veryNicefunction(long n, int nd, int arr[]){
 }
 int main()
 {
-    // for(long int i = 1234567890; i <= 9876543210; i++){ // 26 seconds algorithm 
+    // for(long int i = 1234567890; i <= 9876543210; i++){ // 26 seconds algorithm using brute force
     //     if(validate(i)){
     //         printf("%ld\n",i);
     //     }     

@@ -19,14 +19,16 @@ using namespace std; // make all symbols of the std namespace directly visible
 
 void do_it(int N)
 {
-  cout << " n n*n      sqrt(n)\n"
-       << "-- --- -----------------\n";
+  cout << " n n*n   cbrt(n)       sqrt(n)\n"
+       << "-- --- ----------- -----------------\n";
   for(int i = 1;i <= N;i++)
   {
     cout << setw(2) << i
          << " "
          << setw(3) << i * i
          << " "
+         << fixed << setw(10) << setprecision(8) << cbrt(double(i))
+         << "  "
          << fixed << setw(17) << setprecision(15) << sqrt(double(i))
          << endl;
 #if ALSO_USE_PRINTF != 0

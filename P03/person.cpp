@@ -16,13 +16,16 @@ class person
     const static int debug = 0;
     char d_name[max_size + 1];
     char d_address[max_size + 1];
+    char d_phoneNumber[max_size + 1];
   public:
-    person(const char *name = "",const char *address = ""); // constructor
+    person(const char *name = "",const char *address = "", const char *phoneNumber = ""); // constructor
     ~person(void);                                          // destructor
     void set_name(const char *name);
     void set_address(const char *address);
+    void set_phoneNumber(const char *phoneNumber);
     const char *get_name(void);
     const char *get_address(void);
+    const char *get_phoneNumber(void);
 };
 
 void person::set_name(const char *name)
@@ -50,12 +53,23 @@ void person::set_address(const char *address)
   d_address[i] = '\0';
 }
 
-person::person(const char *name,const char *address)
+void person::set_phoneNumber(const char *phoneNumber)
+{
+  int i;
+  for(i = 0; phoneNumber[i] != '\0' && i < max_size;i++)
+  {
+    d_phoneNumber[i] = phoneNumber[i];
+  }
+  d_phoneNumber[i] = '\0';
+}
+
+person::person(const char *name,const char *address, const char *phoneNumber)
 { // constructor
   if(debug != 0)
     cout << "person constructor called" << endl;
   this->set_name(name);
   this->set_address(address);
+  this->set_phoneNumber(phoneNumber);
 }
 
 person::~person(void)
@@ -74,23 +88,30 @@ inline const char *person::get_address(void)
   return d_address;
 }
 
+inline const char *person::get_phoneNumber(void)
+{
+  return d_phoneNumber;
+}
 std::ostream & operator << (std::ostream &os,person &p)
 { // make the << operator also work with the person data type
   return os << "[Name]: "
             << p.get_name()
             << "  [Address]: "
             << p.get_address()
+            << "  [Phone Number]: "
+            << p.get_phoneNumber()
             << endl;
 }
 
 int main(void)
 {
-  person p = person("John Doe","no address"); // create a new object and then copy it to p
-  person q("no name","no address");           // create a new object (no copy needed)
+  person p = person("John Doe","no address","no phone number"); // create a new object and then copy it to p
+  person q("no name","no address","no address");           // create a new object (no copy needed)
 
-  cout << "Before change of address: " << p.get_name() << ", " << p.get_address() << endl;
+  cout << "Before change of address and phone number: " << p.get_name() << ", " << p.get_address() << ", " << p.get_phoneNumber() << endl;
   p.set_address("bench 24, Central Park, New York");
-  cout << "After change of address:  " << p.get_name() << ", " << p.get_address() << endl;
+  p.set_phoneNumber("935627262");
+  cout << "After change of address and phone number:  " << p.get_name() << ", " << p.get_address() << ", " << p.get_phoneNumber() << endl;
 
   cout << q; // use the << operator (q is a person!)
   return 0;
