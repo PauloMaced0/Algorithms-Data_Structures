@@ -23,13 +23,10 @@ clean:
 all:		hello table sizes fibonacci command_line_arguments integer_arithmetic_pitfalls factor rational_approximation
 
 ten_digits_integer:	ten_digits_integer.c
-	cc -Wall -O2 -g ten_digits_integer.c -o ten_digits_integer
-
+	gcc -Wall -O2 -g -pg ten_digits_integer.c -o ten_digits_integer
 
 hello:		hello.c
 	cc -Wall -O2 hello.c -o hello
-
-
 
 table:		table.c
 	cc -Wall -O2 table.c -o table -lm

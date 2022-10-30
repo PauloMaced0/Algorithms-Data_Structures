@@ -76,5 +76,6 @@ int main()
     int n = 0;
     int nd = 0;
     veryNicefunction(n, nd, arr);
+    return 0;
    //the number we are looking for... 3816547290 
 }
