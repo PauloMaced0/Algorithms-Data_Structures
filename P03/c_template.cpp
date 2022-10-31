@@ -15,6 +15,7 @@ using namespace std;
 //          on the constructor member function of the stack class (do that as a homework exercise)
 //          homework: to this!
 //
+enum stackState{stack_full = 1, stack_empty = 0};
 
 template <typename T,int max_size>
 class stack
@@ -35,7 +36,7 @@ class stack
     void push(T v)
     { // put a thing in the stack
       if(d_size >= max_size)
-        cerr << "push error: the stack is full" << endl; // nice place to throw an exception!
+        throw stack_full;
       else
         d_data[d_size++] = v;
     }
@@ -49,7 +50,7 @@ class stack
 
       if(d_size <= 0)
       {
-        cerr << "pop error: the stack is empty" << endl; // nice place to throw an exception!
+        throw stack_empty;
         v = T(0); // this assumes that the compiler knows how to convert an integer to type T
       }
       else
@@ -66,7 +67,7 @@ class stack
 
       if(d_size <= 0)
       {
-        cerr << "top error: the stack is empty" << endl; // nice place to throw an exception!
+        throw stack_empty;
         v = T(0); // this assumes that the compiler knows how to convert an integer to type T
       }
       else
@@ -79,12 +80,24 @@ int main(void)
 {
   stack<int,10> s; // a stack capable of holding 10 integers
 
-  cout << "push: 3" << endl;
-  s.push(3);
-  cout << "push: 7" << endl;
-  s.push(7);
-  cout << "pop: " << s.pop() << endl; // should print 7
-  cout << "top: " << s.top() << endl; // should print 3
-  cout << "pop: " << s.pop() << endl; // should print 3
+  try{
+    cout << "push: 3" << endl;
+    s.push(3);
+    cout << "push: 7" << endl;
+    s.push(7);
+    cout << "pop: " << s.pop() << endl; // should print 7
+    cout << "top: " << s.top() << endl; // should print 3
+    cout << "pop: " << s.pop() << endl; // should print 3
+    s.pop(); // will cause an exception (stack as 0 elements)
+  } 
+  catch(stackState state){
+    if(state == 1){
+      cout << "push error: the stack is full" << endl;
+      exit(1);
+    } else {
+      cout << "top error: the stack is empty" << endl;
+      exit(1);
+    }
+  }
   return 0;
 }

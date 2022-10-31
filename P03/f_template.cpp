@@ -20,6 +20,12 @@ T sum(const T *a,int n)
   return s;
 }
 
+template <typename T>
+double Average(const T *array, int size){
+  double s = sum<T>(array,size);
+  return s/size;
+}
+
 int main(void)
 {
   int ia[] = { 1,2,3,4,5 };
@@ -32,6 +38,14 @@ int main(void)
        << "da[] sum: "
        << std::fixed << std::setw(12) << std::setprecision(6)
        << sum<double>(da,size(da))
+       << endl
+       << "ia[] average:"
+       << std::fixed << std::setw(12) << std::setprecision(6)
+       << Average<int>(ia, size(ia))
+       << endl
+       << "da[] average: "
+       << std::fixed << std::setw(12) << std::setprecision(6)
+       << Average<double>(da, size(da))
        << endl;
   return 0;
 }
