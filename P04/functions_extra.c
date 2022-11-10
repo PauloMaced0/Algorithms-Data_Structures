@@ -26,11 +26,16 @@ int g2(int n)
   return r;
 }
 
-void g3(int n,int *a)
+int g3(int n,int *a)
 {
-  for(int i = 1;i <= n;i++)
-    for(int j = i;j <= n;j += i)
+  int count = 0;
+  for(int i = 1;i <= n;i++){
+    for(int j = i;j <= n;j += i){
       a[j] = i;
+      count++;
+    }
+  }
+  return count;
 }
 
 int g4(int n)
@@ -45,4 +50,9 @@ int g4(int n)
 int main(void)
 {
   // place your code here
+  int a[200]= {0};
+  printf("g1 result: %d\n",g1(100));
+  printf("g2 result: %d\n",g2(100));
+  printf("g3 runs %d times\n",g3(100,a));
+  printf("g4 result: %d\n",g4(100));
 }

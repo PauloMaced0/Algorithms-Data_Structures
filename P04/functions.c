@@ -68,4 +68,10 @@ int f6(int n)
 int main(void)
 {
   // place your code here
+  printf("f1 result: %d O(n)",f1(100)); 
+  printf("\nf2 result: %d O(n^2)",f2(100)); 
+  printf("\nf3 result: %d O(n^2)",f3(100)); 
+  printf("\nf4 result: %d O(n)",f4(100)); 
+  printf("\nf5 result: %d O(n^2)",f5(100)); 
+  printf("\nf6 result: %d O(n^3)\n",f6(100)); 
 }
