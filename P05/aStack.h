@@ -8,6 +8,8 @@
 #define _AED_aStack_
 
 #include <cassert>
+#include <cstring>
+#include "../P02/elapsed_time.h"
 
 template <typename T>
 class aStack
@@ -16,8 +18,21 @@ class aStack
     int max_size; // maximum stack size
     int cur_size; // current stack size
     T *data;      // the stack data (stored in an array)
+
+    void resize(void)
+    {
+      int new_max_size = (int)max_size * sizeof(T) * 1.5;
+      T *new_data = new T[max_size];
+      memcpy(new_data, data, max_size * sizeof(T));
+
+      assert(max_size <= 1000000);
+      max_size = new_max_size;
+      delete[] data;
+      data = new_data;
+    }
+
   public:
-    aStack(int n = 100)
+    aStack(int n = 10)
     {
       assert(n >= 10 && n <= 1000000);
       max_size = n;
@@ -54,8 +69,12 @@ class aStack
     }
     void push(T &v)
     {
-      assert(cur_size < max_size);
-      data[cur_size++] = v;
+      if(cur_size < max_size){
+        data[cur_size++] = v;
+      } else {
+        resize();
+        data[cur_size++] = v;
+      }
     }
     T pop(void)
     {
