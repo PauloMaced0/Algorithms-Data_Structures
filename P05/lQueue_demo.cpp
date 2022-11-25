@@ -25,6 +25,9 @@ int main(void)
   {
     if(Q.size() == 0 || (Q.size() < 20 && (rand() & 0x01000000) == 0))
     {
+      if (i == 53)
+      {
+      }
       Q.enqueue(i);
       i++;
     }

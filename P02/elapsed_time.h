@@ -1,5 +1,5 @@
 //
-// Tomás Oliveira e Silva, AED, October 2021
+// (C) Tomás Oliveira e Silva, AED, October 2021
 //
 // code to measure the elapsed time used by a program fragment
 //

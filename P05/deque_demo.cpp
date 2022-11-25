@@ -38,6 +38,7 @@ int main(int argc,char **argv)
       }
       if(D.size() > 0)
         assert(D.peek_head() == i - 1 && D.peek_tail() == o);
+    printf("--------------------\n");
     }
     cout << "  All is well [i=" << i << ",o=" << o << "]" << endl;
   }

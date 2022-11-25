@@ -32,9 +32,9 @@ class aStack
     }
 
   public:
-    aStack(int n = 10)
+    aStack(int n = 100)
     {
-      assert(n >= 10 && n <= 1000000);
+      assert(n >= 100 && n <= 1000000);
       max_size = n;
       cur_size = 0;
       data = new T[n];

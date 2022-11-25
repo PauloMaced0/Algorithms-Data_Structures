@@ -3,6 +3,9 @@
 #
 
 clean:
+	rm -f solution_aMaxHeap_test
+	rm -f deque_demo
+	rm -f doubly_linked_list
 	rm -f a.out
 	rm -f aStack_demo solution_aStack_demo
 	rm -f sList_test
@@ -13,6 +16,8 @@ clean:
 
 all:			aStack_demo sList_test lQueue_demo count_words
 
+doubly_linked_list: doublyLinkedlist_test.cpp dList.h
+	c++ -Wall -O2 doublyLinkedlist_test.cpp -o $@
 
 aStack_demo:		aStack_demo.cpp aStack.h
 	c++ -Wall -O2 aStack_demo.cpp -o $@
@@ -28,20 +33,24 @@ sList_test:		sList_test.cpp sList.h
 lQueue_demo:		lQueue_demo.cpp lQueue.h
 	c++ -Wall -O2 lQueue_demo.cpp -o $@
 
+
+deque_demo:			deque_demo.cpp deque.h
+	c++ -Wall -O2 -std=c++0x deque_demo.cpp -o $@
+
+
 solution_lQueue_demo:	solution_lQueue_demo.cpp lQueue.h
 	c++ -Wall -O2 solution_lQueue_demo.cpp -o $@
 
 
-solution_deque_demo:	solution_deque_demo.cpp deque.h
-	c++ -Wall -O2 solution_deque_demo.cpp -o $@
+solution_aMinHeap_test:	aMinHeap_test.cpp min_heap.h
+	c++ -Wall -O2 aMinHeap_test.cpp -o $@
 
-
-solution_aMinHeap_test:	solution_aMinHeap_test.cpp solution_aMinHeap.h
-	c++ -Wall -O2 solution_aMinHeap_test.cpp -o $@
-
+solution_aMaxHeap_test: 	aMaxHeap_test.cpp max_heap.h
+		c++ -Wall -O2 aMaxHeap_test.cpp -o $@
 
 count_words:		count_words.c hash_table.h
 	cc -Wall -O2 count_words.c -o $@
+
 
 solution_count_words:	solution_count_words.c solution_hash_table.h
 	cc -Wall -O2 solution_count_words.c -o $@
