@@ -16,6 +16,7 @@ int main(void){
     for(int j = 0;j < 100;j++){
         heap.remove(0);
         heap.remove(rand() % 100);
+        heap.remove(6);
         heap.check_minHeap();
     }
     printf("All went well!!!\n");

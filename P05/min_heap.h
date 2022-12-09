@@ -35,9 +35,9 @@ class Min_heap
         void remove(int pos)
         {
             int i,j;
-            if(pos < 1) return;
+            if(pos < 1 || pos > current_size) return;
             for(i = pos;2 * i <= current_size;heap[i] = heap[j],i = j){
-                j = (2 * i + 1 <= current_size && heap[2 * i + 1] > heap[2 * i]) ? 2*i : 2*i+1; // select the smallest child
+                j = (2 * i + 1 <= current_size && heap[2 * i + 1] < heap[2 * i]) ? 2*i+1 : 2*i; // select the smallest child
             }
             for(;i>1 && heap[i / 2] > heap[current_size];i /= 2){
                 heap[i] = heap[i / 2];
@@ -52,7 +52,7 @@ class Min_heap
         }
         void dispaly(void){
             assert(current_size >= 0);
-            for(int i = 1;i<current_size;i++){
+            for(int i = 1;i<=current_size;i++){
                 printf("Min_heap[%d]=%d\n",i,heap[i]);
             }
         }

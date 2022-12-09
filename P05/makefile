@@ -12,6 +12,7 @@ clean:
 	rm -f lQueue_demo solution_lQueue_demo
 	rm -f solution_deque_demo
 	rm -f solution_aMinHeap_test
+	rm -f solution_aPriorityqueue_test
 	rm -f count_words solution_count_words
 
 all:			aStack_demo sList_test lQueue_demo count_words
@@ -47,6 +48,9 @@ solution_aMinHeap_test:	aMinHeap_test.cpp min_heap.h
 
 solution_aMaxHeap_test: 	aMaxHeap_test.cpp max_heap.h
 		c++ -Wall -O2 aMaxHeap_test.cpp -o $@
+
+solution_aPriorityqueue_test:	aPriorityqueue_test.cpp priority_queue.h
+	c++ -Wall -O2 aPriorityqueue_test.cpp -o $@
 
 count_words:		count_words.c hash_table.h
 	cc -Wall -O2 count_words.c -o $@

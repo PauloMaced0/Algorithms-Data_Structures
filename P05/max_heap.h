@@ -52,7 +52,7 @@ class Max_heap
         }
         void dispaly(void){
             if(current_size < 0) return;
-            for(int i = 1;i<current_size;i++){
+            for(int i = 1;i<=current_size;i++){
                 printf("Max_heap[%d]=%d\n",i,heap[i]);
             }
         }
