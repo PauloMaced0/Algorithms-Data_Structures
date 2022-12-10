@@ -7,6 +7,10 @@
 clean:
 	rm -fv a.out
 	rm -fv binary_search_tests
+	rm -f binary_search_last_test
 
 binary_search_tests:	binary_search_tests.c
 	cc -Wall -O2 binary_search_tests.c -o binary_search_tests
+
+binary_search_last_test:	binary_search_last.c
+	cc -Wall -O2 binary_search_last.c -o $@
