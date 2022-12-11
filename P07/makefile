@@ -14,5 +14,3 @@ AUX=bubble_sort.c shaker_sort.c insertion_sort.c Shell_sort.c quick_sort.c merge
 sorting_methods:	$(MAIN) $(AUX) sorting_methods.h
 	cc -Wall -O2 $(MAIN) $(AUX) -o sorting_methods -lm
 
-solution_sorting_methods:	solution_sorting_methods.c $(AUX) sorting_methods.h
-	cc -Wall -O2 solution_sorting_methods.c $(AUX) -o solution_sorting_methods -lm

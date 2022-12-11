@@ -4,6 +4,7 @@
 // sorting algorithms
 //
 
+#include <dirent.h>
 #include <math.h>
 #include <time.h>
 #include <stdio.h>
@@ -123,9 +124,18 @@ int main(int argc,char *argv[argc])
     }
     for(f_idx = 0;f_idx < N_FUNCTIONS;f_idx++)
     {
+      char file_name[64];
+      FILE *fp;
+      strcpy(file_name,functions[f_idx].name);
+      strcat(file_name,".txt");
+      fp = fopen(file_name,"w");
+
       printf("# %s\n",functions[f_idx].name);
       printf("#      n  min time  max time  avg time   std dev\n");
       printf("#------- --------- --------- --------- ---------\n");
+      fprintf(fp, "# %s\n",functions[f_idx].name);
+      fprintf(fp, "#      n  min time  max time  avg time   std dev\n");
+      fprintf(fp, "#------- --------- --------- --------- ---------\n");
       for(n_idx = 10;n_idx <= 80;n_idx++)
       {
         n = (int)round(pow(10.0,0.1 * (double)n_idx));
@@ -153,6 +163,7 @@ int main(int argc,char *argv[argc])
             w += (t[i] - v) * (t[i] - v);
           w /= (double)N_MEASUREMENTS;
           printf("%8d %.3e %.3e %.3e %.3e\n",n,t[N_EXTRA],t[N_EXTRA + N_MEASUREMENTS - 1],v,sqrt(w));
+          fprintf(fp, "%8d %.3e %.3e %.3e %.3e\n",n,t[N_EXTRA],t[N_EXTRA + N_MEASUREMENTS - 1],v,sqrt(w));
           fflush(stdout);
           if((double)N_MEASUREMENTS * v >= MAX_TIME)
             break; // too much time spent on this value of n; skip the remaining ones
@@ -160,7 +171,10 @@ int main(int argc,char *argv[argc])
       }
       printf("#------- --------- --------- --------- ---------\n");
       printf("\n\n");
+      fprintf(fp, "#------- --------- --------- --------- ---------\n");
+      fprintf(fp, "\n\n");
       fflush(stdout);
+      fclose(fp);
     }
     free(data);
     return 0;
