@@ -124,11 +124,8 @@ int main(int argc,char *argv[argc])
     }
     for(f_idx = 0;f_idx < N_FUNCTIONS;f_idx++)
     {
-      char file_name[64];
       FILE *fp;
-      strcpy(file_name,functions[f_idx].name);
-      strcat(file_name,".txt");
-      fp = fopen(file_name,"w");
+      fp = fopen(strcat(functions[f_idx].name,".txt"),"w"); // Creates and/or opens every file.txt on the current directory
 
       printf("# %s\n",functions[f_idx].name);
       printf("#      n  min time  max time  avg time   std dev\n");
